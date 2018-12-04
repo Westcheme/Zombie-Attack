@@ -3,14 +3,13 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-	ofSetFrameRate(30);
+	ofSetFrameRate(60);
 	ofSetCircleResolution(100);
 
 	myFont.load("bloody.otf", 60);
 	mainMenu.load("zombies.jpg");
 
-	gameState = 0;
-
+	gameState = "mainMenu";
 
 	ofSetBackgroundColor(0, 80, 0);
 
@@ -26,22 +25,30 @@ void ofApp::setup()
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	player.update();
-	bullet.update();
-
-	for (int i = 0; i < 10; i++)
+	if (gameState == "inGame")
 	{
-		enemies[i].update();
-		if (player.intersects(enemies[i]) == true) player.health = player.health - 1;
-		if (bullet.intersects(enemies[i]) == true) enemies[i].dead();
+		player.update();
+		bullet.update();
+
+		for (int i = 0; i < 10; i++)
+		{
+			enemies[i].update();
+			if (enemies[i].hits(player) == true) player.health = player.health - 1;
+			if (bullet.hits(enemies[i]) == true && enemies[i].isAlive == "alive")
+			{
+				enemies[i].takeDamage();
+				bullet.bulletStop();
+			}
+
+			enemies[i].seek(player);
+		}
 	}
-	if (player.health <= 0) player.health = 0;
 }
 
 //--------------------------------------------------------------
 void ofApp::draw()
 {	
-	if (gameState == 0)
+	if (gameState == "mainMenu")
 	{
 		mainMenu.draw(0, 0);
 
@@ -49,7 +56,7 @@ void ofApp::draw()
 		myFont.drawString("Press TAB to start the game", 100, 475);
 	}
 
-	if (gameState == 1)
+	if (gameState == "inGame")
 	{
 		player.draw();
 		bullet.draw();
@@ -64,12 +71,17 @@ void ofApp::draw()
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key)
 {
-	if (key == 'w') player.up();
-	if (key == 's') player.down();
-	if (key == 'a') player.left();
-	if (key == 'd') player.right();
-
-	if (key == OF_KEY_TAB) gameState = 1;
+	if (gameState == "inGame")
+	{
+		if (key == 'w') player.up();
+		if (key == 's') player.down();
+		if (key == 'a') player.left();
+		if (key == 'd') player.right();
+	}
+	if (gameState == "mainMenu")
+	{
+		if (key == OF_KEY_TAB) gameState = "inGame";
+	}
 }
 
 //--------------------------------------------------------------
@@ -90,7 +102,10 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button)
 {
-	if (button == 0) bullet.fired(player);
+	if (gameState == "inGame")
+	{
+		if (button == 0) bullet.fired(player);
+	}
 }
 
 //--------------------------------------------------------------

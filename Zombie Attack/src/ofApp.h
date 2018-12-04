@@ -15,11 +15,14 @@ class ofApp : public ofBaseApp{
 		Enemy enemies[10];
 		Bullet bullet;
 
+
+
+
 		ofTrueTypeFont myFont;
 
 		ofImage mainMenu;
 
-		int gameState;
+		string gameState;
 
 
 		void setup();

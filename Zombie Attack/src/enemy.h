@@ -8,17 +8,25 @@ class Enemy : public Circle
 {
 public:
 
-	int vx, vy;
-
-	int enemyHealth;
+	int health;
 
 	int enemyColor;
 
-	int isAlive;
+	string isAlive;
+
+	float xDistance;
+	float yDistance;
+	float magnitude;
+	int speed;
 
 	void setup();
 	void update();
 	void draw();
 
-	void dead();
+	void takeDamage();
+
+
+	bool hits(Circle other);
+
+	void seek(Circle other);
 };

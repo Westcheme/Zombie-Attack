@@ -14,12 +14,6 @@ public:
 	int width;
 	int height;
 
-	int bulletx;
-	int bullety;
-	int bulletvx;
-	int bulletvy;
-	int bulletr;
-
 	void setup();
 	void update();
 	void draw();

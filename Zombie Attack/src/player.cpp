@@ -23,6 +23,8 @@ void Player::update()
 	if (x < 25) x = 25;
 	if (y > 975) y = 975;
 	if (y < 25) y = 25;
+
+	if (health <= 0) health = 0;
 }
 
 void Player::draw()

@@ -13,5 +13,5 @@ public:
 	Circle();
 	Circle(float x_in, float y_in, float r_in);
 
-	bool Circle::intersects(Circle other);
+	bool Circle::collides(Circle other);
 };

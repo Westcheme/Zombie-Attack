@@ -3,15 +3,19 @@
 void Bullet::setup()
 {
 	r = 5;
-	vy = 0;
 
 	isFired = 0;
+
+	speed = 1;
 }
 
 void Bullet::update()
 {
-	x = x + vx;
-	y = y - vy;
+	if (isFired = 1)
+	{
+		x = x + xDistance * speed;
+		y = y + yDistance * speed;
+	}
 }
 
 void Bullet::draw()
@@ -27,9 +31,46 @@ void Bullet::draw()
 void Bullet::fired(Circle other)
 {	
 	isFired = 1;
+	speed = 20;
 
-	vy = 20;
+	if (isFired == 1)
+	{
+		x = other.x;
+		y = other.y;
+	
+		xDistance = ofGetMouseX() - x;
+		yDistance = ofGetMouseY() - y;
 
-	x = other.x;
-	y = other.y;
+		magnitude = sqrt(xDistance * xDistance + yDistance * yDistance);
+
+		xDistance = xDistance / magnitude;
+		yDistance = yDistance / magnitude;
+	}
+}
+
+bool Bullet::hits(Circle other)
+{
+	if (isFired == 1)
+	{
+		float sum, dist;
+
+		bool result;
+
+		sum = (x - other.x) * (x - other.x) + (y - other.y) * (y - other.y);
+
+		dist = sqrt(sum);
+
+		if (dist < r + other.r) result = true;
+		else result = false;
+
+		return(result);
+	}
+}
+
+void Bullet::bulletStop()
+{
+	x = 50000;
+	y = 50000;
+	speed = 0;
+	isFired = 0;
 }
