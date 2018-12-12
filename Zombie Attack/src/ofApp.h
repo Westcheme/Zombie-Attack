@@ -6,6 +6,7 @@
 #include "player.h"
 #include "enemy.h"
 #include "bullet.h"
+#include "base.h"
 
 class ofApp : public ofBaseApp{
 
@@ -14,7 +15,7 @@ class ofApp : public ofBaseApp{
 		Player player;
 		Enemy enemies[10];
 		Bullet bullet;
-
+		Base base;
 
 
 
@@ -22,7 +23,15 @@ class ofApp : public ofBaseApp{
 
 		ofImage mainMenu;
 
+		ofImage gameOver;
+
 		string gameState;
+
+
+
+
+
+
 
 
 		void setup();

@@ -5,12 +5,12 @@ void Enemy::setup()
 	isAlive = "alive";
 
 	x = 25 + rand() % 950;
-	y = 25;
+	y = 1050;
 	r = 20;
 
 	health = 15;
 
-	enemyColor = 25 + rand() % 41;
+	enemyColor.set(0, 25 + rand() % 41, 0);
 
 	speed = 1;
 }
@@ -24,18 +24,27 @@ void Enemy::draw()
 {
 	if (isAlive == "alive")
 	{
+		ofPushMatrix();
+
+		ofRotate(theta);
+
 		//Enemy
 		ofFill();
-		ofSetColor(0, enemyColor, 0);
+		ofSetColor(enemyColor);
 		ofDrawCircle(x, y, r);
 
+		ofSetColor(255, 0, 0);
+		ofDrawLine(x, y, x, y - r);
+
 		ofFill();
-		ofSetColor(0, enemyColor, 0);
+		ofSetColor(enemyColor);
 		ofDrawRectangle(x - 20, y, 5, 30);
 
 		ofFill();
-		ofSetColor(0, enemyColor, 0);
+		ofSetColor(enemyColor);
 		ofDrawRectangle(x + 15, y, 5, 30);
+
+		ofPopMatrix();
 
 
 		//Enemy Health
@@ -84,6 +93,8 @@ void Enemy::seek(Circle other)
 	{
 		xDistance = other.x - x;
 		yDistance = other.y - y;
+
+		theta = atan2(xDistance, yDistance) * 180 / PI;
 
 		magnitude = sqrt(xDistance * xDistance + yDistance * yDistance);
 

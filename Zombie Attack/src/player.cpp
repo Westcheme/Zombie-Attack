@@ -9,6 +9,9 @@ void Player::setup()
 	y = 500;
 	r = 25;
 
+	playerColor.set(0, 0, 255);
+
+
 	health = 100;
 
 	healthx = 880;
@@ -30,7 +33,7 @@ void Player::update()
 void Player::draw()
 {
 	ofFill();
-	ofSetColor(0, 0, 255);
+	ofSetColor(playerColor);
 	ofDrawCircle(x, y, r);
 
 	ofNoFill();

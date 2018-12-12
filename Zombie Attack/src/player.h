@@ -8,6 +8,8 @@ class Player : public Circle
 {
 public:
 
+	ofColor playerColor;
+
 	int health;
 	int healthx;
 	int healthy;

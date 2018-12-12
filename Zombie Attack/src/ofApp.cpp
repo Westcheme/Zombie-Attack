@@ -7,14 +7,14 @@ void ofApp::setup()
 	ofSetCircleResolution(100);
 
 	myFont.load("bloody.otf", 60);
-	mainMenu.load("zombies.jpg");
+	mainMenu.load("mainmenu.png");
+	gameOver.load("gameover.jpg");
 
 	gameState = "mainMenu";
 
-	ofSetBackgroundColor(0, 80, 0);
-
 	player.setup();
 	bullet.setup();
+	//base.setup();
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -42,6 +42,8 @@ void ofApp::update()
 
 			enemies[i].seek(player);
 		}
+
+		if (player.health <= 0) gameState = "gameOver";
 	}
 }
 
@@ -50,20 +52,45 @@ void ofApp::draw()
 {	
 	if (gameState == "mainMenu")
 	{
-		mainMenu.draw(0, 0);
+		ofSetBackgroundColor(0, 0, 0);
 
-		myFont.drawString("Zombie Assault", 100, 400);
+		ofSetColor(255, 255, 255);
+		mainMenu.draw(50, 100, 900, 300);
+
+		ofSetColor(255, 0, 0);
 		myFont.drawString("Press TAB to start the game", 100, 475);
 	}
-
 	if (gameState == "inGame")
 	{
+		ofSetBackgroundColor(0, 80, 0);
+
+		//base.draw();
 		player.draw();
 		bullet.draw();
 
 		for (int i = 0; i < 10; i++)
 		{
 			enemies[i].draw();
+		}
+	}
+	if (gameState == "gameOver")
+	{
+		player.health = 100;
+
+		ofSetBackgroundColor(0, 0, 0);
+
+		ofSetColor(255, 255, 255);
+		gameOver.draw(-130, 100);
+
+		ofSetColor(134, 0, 0);
+		myFont.drawString("Press TAB To Try Again", 250, 600);
+
+		player.setup();
+		bullet.setup();
+
+		for (int i = 0; i < 10; i++)
+		{
+			enemies[i].setup();
 		}
 	}
 }
@@ -77,10 +104,16 @@ void ofApp::keyPressed(int key)
 		if (key == 's') player.down();
 		if (key == 'a') player.left();
 		if (key == 'd') player.right();
+
+		if (key == 'r') bullet.reload();
 	}
 	if (gameState == "mainMenu")
 	{
 		if (key == OF_KEY_TAB) gameState = "inGame";
+	}
+	if (gameState == "gameOver")
+	{
+		if (key == OF_KEY_TAB) gameState = "mainMenu";
 	}
 }
 

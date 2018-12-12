@@ -4,15 +4,19 @@
 
 #include "circle.h"
 
+#define PI 3.141592
+
 class Enemy : public Circle
 {
 public:
 
 	int health;
 
-	int enemyColor;
+	ofColor enemyColor;
 
 	string isAlive;
+
+	float theta;
 
 	float xDistance;
 	float yDistance;

@@ -8,6 +8,12 @@ class Bullet : public Circle
 {
 public:
 	//Varibles
+	ofImage bullet;
+	ofSoundPlayer reloadSound;
+	ofSoundPlayer firedSound;
+
+	int numBullets;
+
 	int vx, vy;
 
 	int isFired;
@@ -23,6 +29,8 @@ public:
 	void draw();
 
 	void fired(Circle other);
+
+	void reload();
 
 	bool hits(Circle other);
 
