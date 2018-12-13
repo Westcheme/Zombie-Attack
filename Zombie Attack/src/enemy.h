@@ -4,8 +4,6 @@
 
 #include "circle.h"
 
-#define PI 3.141592
-
 class Enemy : public Circle
 {
 public:

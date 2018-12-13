@@ -1,7 +1,10 @@
-﻿  enemy.cpp
-c:\users\jlwes\school\ece 270\of_v0.10.0_vs2017_release\apps\myapps\zombie attack\src\enemy.h(7): warning C4005: 'PI': macro redefinition
-  c:\users\jlwes\school\ece 270\of_v0.10.0_vs2017_release\libs\openframeworks\math\ofmathconstants.h(21): note: see previous definition of 'PI'
-c:\users\jlwes\school\ece 270\of_v0.10.0_vs2017_release\apps\myapps\zombie attack\src\enemy.cpp(29): warning C4996: 'ofRotate': Use ofRotateDeg or ofRotateRad
-  c:\users\jlwes\school\ece 270\of_v0.10.0_vs2017_release\libs\openframeworks\graphics\ofgraphics.h(1011): note: see declaration of 'ofRotate'
-c:\users\jlwes\school\ece 270\of_v0.10.0_vs2017_release\apps\myapps\zombie attack\src\enemy.cpp(88): warning C4715: 'Enemy::hits': not all control paths return a value
-  Zombie Attack.vcxproj -> C:\Users\jlwes\School\ECE 270\of_v0.10.0_vs2017_release\apps\myApps\Zombie Attack\bin\Zombie Attack_debug.exe
+﻿  bullet.cpp
+e:\school\ece270\of_v0.10.0_vs2017_release\of_v0.10.0_vs2017_release\apps\myapps\zombie attack\src\bullet.cpp(87): warning C4715: 'Bullet::hits': not all control paths return a value
+  Zombie Attack.vcxproj -> E:\School\ECE270\of_v0.10.0_vs2017_release\of_v0.10.0_vs2017_release\apps\myApps\Zombie Attack\bin\Zombie Attack_debug.exe
+  
+  	                   2	E:\School\ECE270\of_v0.10.0_vs2017_release\of_v0.10.0_vs2017_release\libs\fmodex\lib\vs\Win32\
+  	  *EXTRA File 		 5647872	E:\School\ECE270\of_v0.10.0_vs2017_release\of_v0.10.0_vs2017_release\apps\myApps\Zombie Attack\bin\FreeImage.dll
+  
+  	                   1	E:\School\ECE270\of_v0.10.0_vs2017_release\of_v0.10.0_vs2017_release\libs\FreeImage\lib\vs\Win32\
+  	  *EXTRA File 		 1266176	E:\School\ECE270\of_v0.10.0_vs2017_release\of_v0.10.0_vs2017_release\apps\myApps\Zombie Attack\bin\fmodex.dll
+  	  *EXTRA File 		 1312768	E:\School\ECE270\of_v0.10.0_vs2017_release\of_v0.10.0_vs2017_release\apps\myApps\Zombie Attack\bin\fmodexL.dll

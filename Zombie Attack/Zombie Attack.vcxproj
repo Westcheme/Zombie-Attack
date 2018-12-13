@@ -176,7 +176,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\base.cpp" />
     <ClCompile Include="src\bullet.cpp" />
     <ClCompile Include="src\circle.cpp" />
     <ClCompile Include="src\enemy.cpp" />
@@ -185,7 +184,6 @@
     <ClCompile Include="src\player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\base.h" />
     <ClInclude Include="src\bullet.h" />
     <ClInclude Include="src\circle.h" />
     <ClInclude Include="src\enemy.h" />

@@ -14,7 +14,6 @@ void ofApp::setup()
 
 	player.setup();
 	bullet.setup();
-	//base.setup();
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -64,7 +63,6 @@ void ofApp::draw()
 	{
 		ofSetBackgroundColor(0, 80, 0);
 
-		//base.draw();
 		player.draw();
 		bullet.draw();
 

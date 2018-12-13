@@ -24,25 +24,25 @@ void Enemy::draw()
 {
 	if (isAlive == "alive")
 	{
+		//Enemy
+
 		ofPushMatrix();
 
-		ofRotate(theta);
+		ofTranslate(x, y);
 
-		//Enemy
-		ofFill();
-		ofSetColor(enemyColor);
-		ofDrawCircle(x, y, r);
-
-		ofSetColor(255, 0, 0);
-		ofDrawLine(x, y, x, y - r);
+		ofRotate(-theta);
 
 		ofFill();
 		ofSetColor(enemyColor);
-		ofDrawRectangle(x - 20, y, 5, 30);
+		ofDrawCircle(0, 0, r);
 
 		ofFill();
 		ofSetColor(enemyColor);
-		ofDrawRectangle(x + 15, y, 5, 30);
+		ofDrawRectangle(-20, 0, 5, 30);
+
+		ofFill();
+		ofSetColor(enemyColor);
+		ofDrawRectangle(15, 0, 5, 30);
 
 		ofPopMatrix();
 

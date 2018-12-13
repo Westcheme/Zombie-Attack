@@ -26,6 +26,7 @@ void Bullet::update()
 
 void Bullet::draw()
 {
+	//Ammo Counter
 	for (int i = 0; i < numBullets; i++)
 	{
 		ofSetColor(255, 255, 255);

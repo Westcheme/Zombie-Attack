@@ -6,7 +6,6 @@
 #include "player.h"
 #include "enemy.h"
 #include "bullet.h"
-#include "base.h"
 
 class ofApp : public ofBaseApp{
 
@@ -15,7 +14,6 @@ class ofApp : public ofBaseApp{
 		Player player;
 		Enemy enemies[10];
 		Bullet bullet;
-		Base base;
 
 
 

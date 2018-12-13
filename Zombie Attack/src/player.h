@@ -16,14 +16,14 @@ public:
 	int width;
 	int height;
 
+	float theta;
+
 	void setup();
 	void update();
 	void draw();
 
-	float up();
-	float down();
-	float left();
-	float right();
-
-	void fireBullet();
+	void up();
+	void down();
+	void left();
+	void right();
 };
