@@ -12,7 +12,7 @@ class ofApp : public ofBaseApp{
 	public:
 
 		Player player;
-		Enemy enemies[10];
+		Enemy enemies[100];
 		Bullet bullet;
 
 

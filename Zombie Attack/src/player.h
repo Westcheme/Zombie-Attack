@@ -10,11 +10,11 @@ public:
 
 	ofColor playerColor;
 
+	ofTrueTypeFont scoreFont;
+
 	int health;
-	int healthx;
-	int healthy;
-	int width;
-	int height;
+
+	int score;
 
 	float theta;
 

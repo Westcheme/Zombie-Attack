@@ -36,11 +36,19 @@ void ofApp::update()
 			if (bullet.hits(enemies[i]) == true && enemies[i].isAlive == "alive")
 			{
 				enemies[i].takeDamage();
+				if (enemies[i].health <= 0)
+				{
+					enemies[i].isAlive = "dead";
+					player.score = player.score + 10;
+				}
+
 				bullet.bulletStop();
 			}
 
 			enemies[i].seek(player);
 		}
+
+		if (player.score == 100) gameState = "youWon";
 
 		if (player.health <= 0) gameState = "gameOver";
 	}
@@ -91,6 +99,25 @@ void ofApp::draw()
 			enemies[i].setup();
 		}
 	}
+	if (gameState == "youWon")
+	{
+		player.health = 100;
+
+		ofSetBackgroundColor(0, 0, 0);
+
+		ofSetColor(134, 0, 0);
+		myFont.drawString("Congratulations You Won", 200, 500);
+
+		myFont.drawString("Press TAB To Play Again", 200, 600);
+
+		player.setup();
+		bullet.setup();
+
+		for (int i = 0; i < 10; i++)
+		{
+			enemies[i].setup();
+		}
+	}
 }
 
 //--------------------------------------------------------------
@@ -110,6 +137,10 @@ void ofApp::keyPressed(int key)
 		if (key == OF_KEY_TAB) gameState = "inGame";
 	}
 	if (gameState == "gameOver")
+	{
+		if (key == OF_KEY_TAB) gameState = "mainMenu";
+	}
+	if (gameState == "youWon")
 	{
 		if (key == OF_KEY_TAB) gameState = "mainMenu";
 	}

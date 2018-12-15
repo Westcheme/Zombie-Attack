@@ -10,23 +10,17 @@ void Player::setup()
 
 	r = 25;
 
+	scoreFont.load("bloody.otf", 60);
+
 	playerColor.set(0, 0, 255);
 
 	health = 100;
 
-	healthx = 880;
-	healthy = 20;
-	width = 100;
-	height = 40;
+	score = 0;
 }
 
 void Player::update()
 {
-	//if (x > 975) x = 975;
-	//if (x < 25) x = 25;
-	//if (y > 975) y = 975;
-	//if (y < 25) y = 25;
-
 	if (health <= 0) health = 0;
 
 	theta = atan2(ofGetMouseY() - y, ofGetMouseX() - x) * 180 / PI;
@@ -63,12 +57,15 @@ void Player::draw()
 	if (health <= 100) ofSetColor(0, 255, 0);
 	if (health <= 70) ofSetColor(255, 255, 0);
 	if (health <= 30) ofSetColor(255, 0, 0);
-	ofDrawRectangle(healthx, healthy, health, height);
+	ofDrawRectangle(880, 20, health, 40);
 
 	ofNoFill();
 	ofSetLineWidth(3);
 	ofSetColor(0, 0, 0);
-	ofDrawRectangle(healthx, healthy, width, height);
+	ofDrawRectangle(880, 20, 100, 40);
+
+	//Player Score
+	scoreFont.drawString(to_string(score), 780, 60);
 }
 
 void Player::up()

@@ -64,8 +64,6 @@ void Enemy::draw()
 void Enemy::takeDamage()
 {
 	health = health - 5;
-
-	if (health <= 0) isAlive = "dead";
 }
 
 bool Enemy::hits(Circle other)
