@@ -1,8 +1,5 @@
 #include "player.h"
 
-
-
-
 void Player::setup()
 {
 	x = 500;
