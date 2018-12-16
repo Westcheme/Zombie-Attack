@@ -19,6 +19,8 @@ void ofApp::setup()
 	{
 		enemies[i].setup();
 	}
+
+	cout << gameState;
 }
 
 //--------------------------------------------------------------
@@ -66,6 +68,25 @@ void ofApp::draw()
 
 		ofSetColor(255, 0, 0);
 		myFont.drawString("Press TAB to start the game", 100, 475);
+
+		myFont.drawString("Press I to see the instructions", 100, 550);
+	}
+	if (gameState == "instructions")
+	{
+		ofSetBackgroundColor(0, 0, 0);
+
+		ofSetColor(255, 0, 0);
+		myFont.drawString("The apocalypse has begun and you", 50, 100);
+		myFont.drawString("are attacked by a horde of zombies,", 50, 175);
+		myFont.drawString("you must defend your life with", 50, 250);
+		myFont.drawString("nothing but your trusty handgun.", 50, 325);
+
+		myFont.drawString("Use W A S D to move the player", 50, 500);
+		myFont.drawString("and left mouse to shoot.", 50, 575);
+		myFont.drawString("BACKSPACE if you would", 50, 650);
+		myFont.drawString("like to pause the game.", 50, 725);
+
+		myFont.drawString("Press TAB to start the game", 50, 900);
 	}
 	if (gameState == "inGame")
 	{
@@ -78,6 +99,15 @@ void ofApp::draw()
 		{
 			enemies[i].draw();
 		}
+	}
+	if (gameState == "paused")
+	{
+		ofSetBackgroundColor(0, 0, 0);
+
+		ofSetColor(255, 0, 0);
+		myFont.drawString("PAUSED", 450, 500);
+
+		myFont.drawString("Press TAB to resume", 275, 600);
 	}
 	if (gameState == "gameOver")
 	{
@@ -131,8 +161,20 @@ void ofApp::keyPressed(int key)
 		if (key == 'd') player.right();
 
 		if (key == 'r') bullet.reload();
+
+		if (key == OF_KEY_BACKSPACE) gameState = "paused";
 	}
 	if (gameState == "mainMenu")
+	{
+		if (key == OF_KEY_TAB) gameState = "inGame";
+
+		if (key == 'i') gameState = "instructions";
+	}
+	if (gameState == "instructions")
+	{
+		if (key == OF_KEY_TAB) gameState = "inGame";
+	}
+	if (gameState == "paused")
 	{
 		if (key == OF_KEY_TAB) gameState = "inGame";
 	}
